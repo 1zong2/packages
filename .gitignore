@@ -23,6 +23,11 @@ swinIR/ptnn/*
 gfpgan/ptnn/*
 !gfpgan/ptnn/.gitkeep
 
+# to remain gitkeep
+!curricularface/ptnn/
+curricularface/ptnn/*
+!curricularface/ptnn/.gitkeep
+
 ##
 samples
 outputs

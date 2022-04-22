@@ -1,23 +1,21 @@
 import torch
 import os
-import sys
-sys.path.append("../")
 from torchvision import transforms
 import torch.nn.functional as F
 
-from packages.arcface.nets import Backbone
+from packages.curricularface.nets import Backbone
 from packages.utils.util import convert_img_type
 from packages.utils.model_util import download_weight
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
-file_PATH = './arcface/ptnn/arcface.pth'
+file_PATH = './curricularface/ptnn/curricularface.pth'
 
-arcface = Backbone(50, 0.6, 'ir_se').to(device)
+curricularface = Backbone().to(device)
 if not os.path.isfile(file_PATH):
-    download_weight('arcface')
+    download_weight('curricularface')
 
-arcface.load_state_dict(torch.load(file_PATH, map_location=device))
-arcface.eval()
+curricularface.load_state_dict(torch.load(file_PATH, map_location=device))
+curricularface.eval()
 
 def get_id(face):
     image = convert_img_type(face,'pil')
@@ -29,6 +27,6 @@ def get_id(face):
 
     aligned_source_face_ = transform(image).unsqueeze(0).to(device).float()
     with torch.no_grad():
-        source_id = arcface(F.interpolate(aligned_source_face_[:, :, 16:240, 16:240], (112, 112), mode='bilinear', align_corners=True))
+        source_id = curricularface(F.interpolate(aligned_source_face_[:, :, 16:240, 16:240], (112, 112), mode='bilinear', align_corners=True))
 
     return source_id

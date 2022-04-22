@@ -8,7 +8,7 @@ weight_dic = {
     'swinIR': 'https://drive.google.com/uc?id=1hQSl6iwmlhD6cR5qoMHc7TMqSxRZwHS6',
     'gfpgan': 'https://drive.google.com/uc?id=1fyXxJzQzh00WJbZEvUj_utFXIZt29_4Y',
     'arcface': 'https://drive.google.com/uc?id=1ooTAvChl6j4YA1ohFtE87pKDTeZTsH4K',
-
+    'curricularface': 'https://drive.google.com/uc?id=1WZobwG8vVFf0l-7orUzvYWl6YAWOnx2k'
 }
 
 save_path = {
@@ -17,7 +17,7 @@ save_path = {
     'swinIR': './packages/swinIR/ptnn/swinIR.pth',
     'gfpgan': './packages/gfpgan/ptnn/GFPGAN.pth',
     'arcface': './packages/arcface/ptnn/arcface.pth',
-
+    'curricularface': './packages/curricularface/ptnn/curricularface.pth',
 }
 
 def download_weight(job):
